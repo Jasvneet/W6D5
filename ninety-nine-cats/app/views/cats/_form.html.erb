@@ -1,10 +1,13 @@
+<% path = type == :new ? cats_url : cat_url(cat) %>
+<% text = type == :new ? "create cat" : "update cat"%>
+<h2>
+    <%= text %>
+</h2>
 
-
-
-
-
-<form action="<%= cat_url(@cat) %>" method="POST">
-    <input type="hidden" name="method" value="PATCH"/>
+<form action="<%= path %>" method="POST">
+    <% if type == :edit %>
+    <input type="hidden" name="_method" value="PATCH"/>
+    <% end %>
     <div>
         <label for="name">Name:</label>
         <input id="name" name="cat[name]" value="<%= @cat.name %>" />
@@ -15,8 +18,15 @@
         <input id="birth_date" name="cat[birth_date]" value="<%= @cat.birth_date %>" />
     </div>
     <div>
-        <label for="color">Color:</label>
-        <input id="color" name="cat[color]" value="<%= @cat.color %>" />
+        
+            <label for="color">Color:</label>
+        <select id="color" name="cat[color]">
+            <option value="CAT_COLORS">orange </option>
+            <option value="CAT_COLORS"> red</option>
+            <option value="CAT_COLORS"> blue</option>
+            <option value="CAT_COLORS"> green</option>
+            <option value="CAT_COLORS"> teal</option>
+        </select>
     </div>
     <div>
         <label for="sex">Sex:</label>
@@ -26,5 +36,5 @@
         <label for="description">Description:</label>
         <input id="description" name="cat[description]" value="<%= @cat.description %>" />
     </div>
-    <input type="submit" value="Update Cat" />
+    <input type="submit" value=text />
 </form>
