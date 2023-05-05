@@ -14,7 +14,7 @@ ApplicationRecord.transaction do
     ApplicationRecord.connection.reset_pk_sequence!("cats")
 
     puts "creating seed data..."
-    cat1 = Cat.create!(birth_date: "2010/05/05", color: "orange", name: "Garfield", sex: "M", description: "i am garfield and I am lazy")
+    cat1 = Cat.create!(birth_date: "2010/05/05", color: "orange", name: "Garfield", sex: "M", description: "I am garfield and I am lazy")
     cat2 = Cat.create!(birth_date: "2016/06/05", color: "green", name: "Bubba", sex: "F", description: "meow meow meow")
 
 
